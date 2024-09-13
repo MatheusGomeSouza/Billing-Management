@@ -1,0 +1,8 @@
+Django
+djangorestframework
+psycopg2
+pytz
+django-crispy-forms
+Pillow
+django-debug_toolbar
+pytest
