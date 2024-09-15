@@ -24,5 +24,8 @@ urlpatterns = [
     path('', invoice_views.index, name='index'),
     path('form/', invoice_views.form, name='form'),
     path('basic/', invoice_views.basic, name='basic'),
+    path('billing/', invoice_views.billing, name='billing'),
+    path('itens/<str:billing_id>/', invoice_views.item_form, name='itens'),
+    path('post_itens/', invoice_views.itens, name='post_itens'),
     path('admin/', admin.site.urls),
 ]

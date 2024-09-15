@@ -10,9 +10,6 @@ class BasicData(models.Model):
     status = models.CharField("Status", max_length=250)
     user = models.ForeignKey(User, null=True, on_delete=models.CASCADE) 
 
-    def __str__(self):
-        return str(self.id)
-
 
 class Billing(models.Model):
     data = models.ForeignKey(BasicData, related_name="dados", on_delete=models.CASCADE)

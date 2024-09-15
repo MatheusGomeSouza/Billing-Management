@@ -139,7 +139,7 @@
       <div class="container">
         <div class="page-inner">
           <div class="page-header">
-            <h3 class="fw-bold mb-3">Forms</h3>
+            <h3 class="fw-bold mb-3">Itens</h3>
             <ul class="breadcrumbs mb-3">
               <li class="nav-home">
                 <a href="#">
@@ -150,142 +150,106 @@
                 <i class="icon-arrow-right"></i>
               </li>
               <li class="nav-item">
-                <a href="#">Forms</a>
+                <a href="#">Itens</a>
               </li>
               <li class="separator">
                 <i class="icon-arrow-right"></i>
               </li>
               <li class="nav-item">
-                <a href="#">Basic Form</a>
+                <a href="#">Itens</a>
               </li>
             </ul>
           </div>
-          {% if basic_obj %}
-          <div class="col-sm-6 col-md-3">
-            <div class="card card-stats card-round">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-5">
-                    <div class="icon-big text-center">
-                      <i class="icon-wallet text-success"></i>
-                    </div>
-                  </div>
-                  <div class="col-7 col-stats">
-                    <div class="numbers">
-                      <p class="card-category">Renda Mensal</p>
-                      <h4 class="card-title">{{ basic_obj.salary }}</h4>
-                    </div>
-                  </div>
+          <div class="card-header">
+            <div class="card-title">Adicionar itens</div>
+          </div>
+          <form method="post" action="/post_itens/">
+            {% csrf_token %}
+            <div class="col-md-6 col-lg-4">
+              <div class="form-group">
+                <label for="largeInput">Descrição</label>
+                <input
+                  type="text"
+                  class="form-control form-control"
+                  id="description"
+                  name="description"
+                  placeholder="Default Input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="largeInput">Banco</label>
+                <input
+                  type="text"
+                  class="form-control form-control"
+                  id="bank"
+                  name="bank"
+                  placeholder="Default Input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="defaultSelect">Valor do item</label>
+                <div class="input-group mb-3">
+                  <span class="input-group-text">$</span>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="value"
+                    name="value"
+                    aria-label="Amount (to the nearest dollar)"
+                  />
+                  <span class="input-group-text">.00</span>
                 </div>
               </div>
-            </div>
-          </div>
-          {% else %}
-          <div class="card-header">
-            <div class="card-title">Create Analisys View</div>
-          </div>
-          <form method="post" action="/basic/">
-            {% csrf_token %}
-            <div class="card-body">
-              <div class="row">
-                <div class="col-md-6 col-lg-4">
-                  <div class="form-group">
-                    <label for="Salary">Salary</label>
-                    <div class="input-group mb-3">
-                      <span class="input-group-text">$</span>
-                      <input type="text" class="form-control" id="Salary" name="Salary"
-                        aria-label="Amount (to the nearest dollar)" />
-                      <span class="input-group-text">.00</span>
-                    </div>
-                    <small id="emailHelp2" class="form-text text-muted">Digite o seu ganho mensal.</small>
-                  </div>
-                  <input type="hidden" id="user_id" name="user_id" value="{{ user.id }}">
-                </div>
-              </div>
-            </div>
-            <div class="card-action">
-              <button type="submit" class="btn btn-success">Submit</button>
-            </div>
-          </form>
-          {% endif %}
-          {% if not billings %}
-          <div class="card-header">
-            <div class="card-title">Adicionar contas</div>
-          </div>
-          <form method="post" action="/billing/">
-            {% csrf_token %}
-            <div class="card-body">
-              <div class="row">
-                <div class="col-md-6 col-lg-4">
-                  <div class="form-group">
-                    <div class="form-group">
-                      <label for="defaultSelect">Mês da fatura</label>
-                      <select class="form-select form-control" id="defaultSelect" name="month" id="month">
-                        <option>Janeiro</option>
-                        <option>Fevereiro</option>
-                        <option>Março</option>
-                      </select>
-                      <small id="emailHelp2" class="form-text text-muted">Escolha o mês da fatura.</small>
-                    </div>
-                    <input type="hidden" id="data_id" name="data_id" value="{{ basic_obj.id }}">
-                  </div>
-                </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=True
+                  id="required"
+                  name="required"
+                />
+                <label
+                  class="form-check-label"
+                  for="flexCheckDefault"
+                >
+                  Conta fixa
+                </label>
+                <input type="hidden" id="billing" name="billing" value="{{ billing_id }}">
               </div>
               <div class="card-action">
                 <button type="submit" class="btn btn-success">Submit</button>
               </div>
+            </div>
           </form>
-          {% else %}
-          {% for billing in  billings %}
-          <div class="col-sm-6 col-md-3">
-            <div class="card card-stats card-success card-round">
+          {% if itens %}
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">Hoverable Table</div>
+              </div>
               <div class="card-body">
-                <div class="row">
-                  <div class="col-5">
-                    <div class="icon-big text-center">
-                      <i class="fas fa-chart-pie"></i>
-                    </div>
-                  </div>
-                  <div class="col-7 col-stats">
-                    <div class="numbers">
-                      <h5 class="mb-1">
-                        <b><a href="/itens/{{billing.id}}/">{{billing.month}}</a></b>
-                      </h5>
-                      <p class="card-category"></p>
-                      <h4 class="card-title"><small>{{billing.status}}</small></h4>
-                    </div>
-                  </div>
-                </div>
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">Descrição</th>
+                      <th scope="col">Valor</th>
+                      <th scope="col">Conta Fixa</th>
+                      <th scope="col">Banco</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for item in itens %}
+                    <tr>
+                      <td>{{item.description}}</td>
+                      <td>{{item.value}}</td>
+                      <td>{{item.required}}</td>
+                      <td>{{item.bank}}</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
               </div>
             </div>
-          </div>
-          {% endfor %}
-          <div class="card-header">
-            <div class="card-title">Adicionar contas</div>
-          </div>
-          <form method="post" action="/billing/">
-            {% csrf_token %}
-            <div class="card-body">
-              <div class="row">
-                <div class="col-md-6 col-lg-4">
-                  <div class="form-group">
-                    <div class="form-group">
-                      <label for="defaultSelect">Mês da fatura</label>
-                      <select class="form-select form-control" id="defaultSelect" name="month" id="month">
-                        <option>Janeiro</option>
-                        <option>Fevereiro</option>
-                        <option>Março</option>
-                      </select>
-                      <small id="emailHelp2" class="form-text text-muted">Escolha o mês da fatura.</small>
-                    </div>
-                    <input type="hidden" id="data_id" name="data_id" value="{{ basic_obj.id }}">
-                  </div>
-                </div>
-              </div>
-              <div class="card-action">
-                <button type="submit" class="btn btn-success">Submit</button>
-              </div>
-          </form>
           {% endif %}
         </div>
       </div>
