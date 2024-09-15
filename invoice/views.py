@@ -29,8 +29,11 @@ def billing(request):
 
 def itens(request):
     if request.method=='POST':
-        salary = request.POST['Salary']
-        user_id = request.POST['user_id']
-        obj = Itens(salary=salary, user_id=user_id, status='Open')
+        billing = request.POST['billing']
+        description = request.POST['description']
+        value = request.POST['value']
+        required = request.POST['required']
+        bank = request.POST['bank']
+        obj = Itens(billing=billing, description=description, value=value, required=required, bank=bank)
         obj.save()
     return render(request,'guest/forms.html')
