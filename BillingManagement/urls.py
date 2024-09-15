@@ -17,6 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from django.contrib.auth import views as auth_views
+from invoice import views as invoice_views
+
 urlpatterns = [
+    path('', invoice_views.index, name='index'),
+    path('form/', invoice_views.form, name='form'),
+    path('basic/', invoice_views.basic, name='basic'),
     path('admin/', admin.site.urls),
 ]
