@@ -472,15 +472,17 @@
         doughnutChart = document
           .getElementById("doughnutChart")
           .getContext("2d");
+      
+      var month = {{ month|safe }};
+
+      var total = {{ total|safe }};
+
+      var perc = {{ perc|safe }};
 
       var myLineChart = new Chart(lineChart, {
         type: "line",
         data: {
-          labels: [
-            "Jan",
-            "Feb",
-            "Mar"
-          ],
+          labels: month,
           datasets: [
             {
               label: "Active Users",
@@ -494,9 +496,7 @@
               backgroundColor: "transparent",
               fill: true,
               borderWidth: 2,
-              data: [
-                542, 480, 430
-              ],
+              data: total,
             },
           ],
         },
@@ -528,17 +528,13 @@
       var myBarChart = new Chart(barChart, {
         type: "bar",
         data: {
-          labels: [
-            "Jan",
-            "Feb",
-            "Mar"
-          ],
+          labels: month,
           datasets: [
             {
               label: "Sales",
               backgroundColor: "rgb(23, 125, 255)",
               borderColor: "rgb(23, 125, 255)",
-              data: [3, 2, 9],
+              data: total,
             },
           ],
         },
@@ -603,12 +599,12 @@
         data: {
           datasets: [
             {
-              data: [10, 20, 30],
-              backgroundColor: ["#f3545d", "#fdaf4b", "#1d7af3"],
+              data: perc,
+              backgroundColor: ["#1d7af3", "#f3545d", "#fdaf4b"],
             },
           ],
 
-          labels: ["Red", "Yellow", "Blue"],
+          labels: ["Contas Fixas","Contas variáveis", "Investimentos"],
         },
         options: {
           responsive: true,

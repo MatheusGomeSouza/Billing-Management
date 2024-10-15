@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.views.decorators.csrf import csrf_protect
 from invoice.models import BasicData, Billing, Itens, Investiment
+import json
 
 # Create your views here.
 
@@ -23,15 +24,33 @@ def basic_data(request):
     billings_obj = Billing.objects.filter(data=basic_obj.id) if basic_obj else None
     month = []
     full = []
+    fix = 0
+    var = 0
+    inve = 0
+    soma_total = 0
     for item in billings_obj:
         billing_id = item.id
         total = 0
         contas = Itens.objects.filter(billing_id=billing_id)
         for conta in contas:
+            soma_total += 1
+            if conta.required == True:
+                fix+=1
+            else:
+                var+=1
             total += conta.value
         month.append(item.month)
-        full.append(total)
-    context = {"basic_obj":basic_obj, "billings":billings_obj,"month":month, "total":full}
+        investimentos = Investiment.objects.filter(billing_id=billing_id)
+        if investimentos:
+            for inv in investimentos:
+                soma_total += 1
+                inve+=1
+                full.append(int(total)+int(inv.value))
+        else:
+            full.append(int(total))
+       
+    perc = [(fix*100)/soma_total,(var*100)/soma_total,(inve*100)/soma_total]
+    context = {"basic_obj":basic_obj, "billings":billings_obj,"month":json.dumps(month), "total":json.dumps(full), "perc":json.dumps(perc)}
     # context = RequestContext(request,{"basic_obj":basic_obj})
     return render(request, 'guest/chart.html', context)
 
