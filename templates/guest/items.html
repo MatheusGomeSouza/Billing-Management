@@ -225,7 +225,7 @@
           <div class="col-md-6">
             <div class="card">
               <div class="card-header">
-                <div class="card-title">Hoverable Table</div>
+                <div class="card-title">Itens da Fatura</div>
               </div>
               <div class="card-body">
                 <table class="table table-hover">
@@ -244,6 +244,65 @@
                       <td>{{item.value}}</td>
                       <td>{{item.required}}</td>
                       <td>{{item.bank}}</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          {% endif %}
+          <form method="post" action="/post_investiment/">
+            {% csrf_token %}
+            <div class="col-md-6 col-lg-4">
+              <div class="form-group">
+                <label for="largeInput">Descrição Investimento</label>
+                <input
+                  type="text"
+                  class="form-control form-control"
+                  id="description"
+                  name="description"
+                  placeholder="Default Input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="defaultSelect">Valor do Investimento</label>
+                <div class="input-group mb-3">
+                  <span class="input-group-text">$</span>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="value"
+                    name="value"
+                    aria-label="Amount (to the nearest dollar)"
+                  />
+                  <span class="input-group-text">.00</span>
+                </div>
+                <input type="hidden" id="billing" name="billing" value="{{ billing_id }}">
+              </div>
+              <div class="card-action">
+                <button type="submit" class="btn btn-success">Submit</button>
+              </div>
+            </div>
+          </form>
+          {% if investiment %}
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">Investimentos</div>
+              </div>
+              <div class="card-body">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">Descrição</th>
+                      <th scope="col">Valor</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for item in investiment %}
+                    <tr>
+                      <td>{{item.description}}</td>
+                      <td>{{item.value}}</td>
                     </tr>
                     {% endfor %}
                   </tbody>

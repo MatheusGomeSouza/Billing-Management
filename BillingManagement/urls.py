@@ -23,9 +23,11 @@ from invoice import views as invoice_views
 urlpatterns = [
     path('', invoice_views.index, name='index'),
     path('form/', invoice_views.form, name='form'),
+    path('preview/', invoice_views.basic_data, name='preview'),
     path('basic/', invoice_views.basic, name='basic'),
     path('billing/', invoice_views.billing, name='billing'),
     path('itens/<str:billing_id>/', invoice_views.item_form, name='itens'),
     path('post_itens/', invoice_views.itens, name='post_itens'),
+    path('post_investiment/', invoice_views.investiment, name='post_investiment'),
     path('admin/', admin.site.urls),
 ]
