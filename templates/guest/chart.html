@@ -256,6 +256,14 @@
           </div>
         </div>
       </div>
+      <div class="container">
+        <div class="page-inner">
+          {% autoescape off %}
+          <div>{{ g }}</div>
+          {% endautoescape %}
+        </div>
+      </div>
+
 
       <!-- Custom template | don't include it in your project! -->
       <div class="custom-template">
@@ -479,6 +487,12 @@
 
       var perc = {{ perc|safe }};
 
+      var fix_f = {{ fix_full|safe }};
+
+      var var_f = {{ var_full|safe }};
+
+      var inve_f = {{ inve_full|safe }};
+
       var myLineChart = new Chart(lineChart, {
         type: "line",
         data: {
@@ -531,10 +545,22 @@
           labels: month,
           datasets: [
             {
-              label: "Sales",
+              label: "Fixos",
               backgroundColor: "rgb(23, 125, 255)",
               borderColor: "rgb(23, 125, 255)",
-              data: total,
+              data: fix_f,
+            },
+            {
+              label: "Variaveis",
+              backgroundColor: "rgb(243, 84, 93)",
+              borderColor: "rgb(243, 84, 93)",
+              data: var_f,
+            },
+            {
+              label: "Investimentos",
+              backgroundColor: "rgb(253, 175, 75)",
+              borderColor: "rgb(253, 175, 75)",
+              data: inve_f,
             },
           ],
         },

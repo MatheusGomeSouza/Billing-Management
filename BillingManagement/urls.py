@@ -24,6 +24,7 @@ urlpatterns = [
     path('', invoice_views.index, name='index'),
     path('form/', invoice_views.form, name='form'),
     path('preview/', invoice_views.basic_data, name='preview'),
+    path('billing_view/', invoice_views.billing_view, name='billing_view'),
     path('basic/', invoice_views.basic, name='basic'),
     path('billing/', invoice_views.billing, name='billing'),
     path('itens/<str:billing_id>/', invoice_views.item_form, name='itens'),

@@ -139,7 +139,7 @@
       <div class="container">
         <div class="page-inner">
           <div class="page-header">
-            <h3 class="fw-bold mb-3">Forms</h3>
+            <h3 class="fw-bold mb-3">Contas</h3>
             <ul class="breadcrumbs mb-3">
               <li class="nav-home">
                 <a href="#">
@@ -150,21 +150,15 @@
                 <i class="icon-arrow-right"></i>
               </li>
               <li class="nav-item">
-                <a href="#">Forms</a>
-              </li>
-              <li class="separator">
-                <i class="icon-arrow-right"></i>
-              </li>
-              <li class="nav-item">
-                <a href="#">Basic Form</a>
+                <a href="{% url 'form' %}">Contas</a>
               </li>
             </ul>
           </div>
           {% if basic_obj %}
-          <div class="col-sm-6 col-md-3">
-            <div class="card card-stats card-round">
-              <div class="card-body">
-                <div class="row">
+          <div class="row">
+            <div class="col-sm-4 col-md-2">
+              <div class="card card-stats card-round">
+                <div class="card-body">
                   <div class="col-5">
                     <div class="icon-big text-center">
                       <i class="icon-wallet text-success"></i>
@@ -181,56 +175,72 @@
             </div>
           </div>         
           {% if billings %}
-          {% for billing in  billings %}
-          <div class="col-sm-6 col-md-3">
-            <div class="card card-stats card-success card-round">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-5">
-                    <div class="icon-big text-center">
-                      <i class="fas fa-chart-pie"></i>
+          <div class="row">
+            {% for billing in  billings %}
+            <div class="col-sm-6 col-md-3">
+              <div class="card card-stats card-success card-round">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-5">
+                      <div class="icon-big text-center">
+                        <i class="fas fa-chart-pie"></i>
+                      </div>
                     </div>
-                  </div>
-                  <div class="col-7 col-stats">
-                    <div class="numbers">
-                      <h5 class="mb-1">
-                        <b><a href="/itens/{{billing.id}}/">{{billing.month}}</a></b>
-                      </h5>
-                      <p class="card-category"></p>
-                      <h4 class="card-title"><small>{{billing.status}}</small></h4>
+                    <div class="col-7 col-stats">
+                      <div class="numbers">
+                        <h5 class="mb-1">
+                          <b><a href="/itens/{{billing.id}}/">{{billing.month}}</a></b>
+                        </h5>
+                        <p class="card-category"></p>
+                        <h4 class="card-title"><small>{{billing.status}}</small></h4>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+            {% endfor %}
           </div>
-          {% endfor %}
           {% endif %}
-          <div class="card-header"></div>
-            <div class="card-title">Adicionar contas</div>
-          </div>
           <form method="post" action="/billing/">
             {% csrf_token %}
-            <div class="card-body">
-              <div class="row">
-                <div class="col-md-6 col-lg-4">
-                  <div class="form-group">
-                    <div class="form-group">
-                      <label for="defaultSelect">Mês da fatura</label>
-                      <select class="form-select form-control" id="defaultSelect" name="month" id="month">
-                        <option>Janeiro</option>
-                        <option>Fevereiro</option>
-                        <option>Março</option>
-                      </select>
-                      <small id="emailHelp2" class="form-text text-muted">Escolha o mês da fatura.</small>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card">
+                  <div class="card-header">
+                    <div class="card-title">Adicionar contas</div>
+                  </div>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-6 col-lg-4">
+                        <div class="form-group">
+                          <label for="email2">Mês da fatura</label>
+                          <select class="form-select form-control" id="defaultSelect" name="month" id="month">
+                            <option>Janeiro</option>
+                            <option>Fevereiro</option>
+                            <option>Março</option>
+                            <option>Abril</option>
+                            <option>Maio</option>
+                            <option>Junho</option>
+                            <option>Julho</option>
+                            <option>Agosto</option>
+                            <option>Setembro</option>
+                            <option>Outubro</option>
+                            <option>Novembro</option>
+                            <option>Dezembro</option>
+                          </select>
+                          <small id="emailHelp2" class="form-text text-muted">Escolha o mês da fatura.</small>
+                          <input type="hidden" id="data_id" name="data_id" value="{{ basic_obj.id }}">
+                        </div>
+                      </div>
                     </div>
-                    <input type="hidden" id="data_id" name="data_id" value="{{ basic_obj.id }}">
                   </div>
                   <div class="card-action">
                     <button type="submit" class="btn btn-success">Submit</button>
                   </div>
                 </div>
               </div>
+            </div>
           </form>
           {% else %}
           <div class="card-header">
@@ -255,9 +265,11 @@
                 </div>
               </div>
             </div>
-            <div class="card-action">
-              <button type="submit" class="btn btn-success">Submit</button>
-            </div>
+            <div class="row">
+              <div class="card-action">
+                <button type="submit" class="btn btn-success">Submit</button>
+              </div>
+          </div>
           </form>
           {% endif %}
         </div>
