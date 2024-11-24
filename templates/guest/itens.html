@@ -142,7 +142,7 @@
             <h3 class="fw-bold mb-3">Contas</h3>
             <ul class="breadcrumbs mb-3">
               <li class="nav-home">
-                <a href="#">
+                <a href="{% url 'index' %}">
                   <i class="icon-home"></i>
                 </a>
               </li>
@@ -159,6 +159,46 @@
                 <a href="#">{{ month }}</a>
               </li>
             </ul>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 col-md-3">
+              <div class="card card-stats card-round">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-5">
+                      <div class="icon-big text-center">
+                        <i class="icon-pie-chart text-warning"></i>
+                      </div>
+                    </div>
+                    <div class="col-7 col-stats">
+                      <div class="numbers">
+                        <p class="card-category">Valor Fatura</p>
+                        <h4 class="card-title">{{ fatura }}</h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+              <div class="card card-stats card-round">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-5">
+                      <div class="icon-big text-center">
+                        <i class="icon-wallet text-success"></i>
+                      </div>
+                    </div>
+                    <div class="col-7 col-stats">
+                      <div class="numbers">
+                        <p class="card-category">Saldo</p>
+                        <h4 class="card-title">{{ saldo }}</h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <form method="post" action="/post_itens/">
             {% csrf_token %}

@@ -19,8 +19,12 @@ from django.urls import path
 
 from django.contrib.auth import views as auth_views
 from invoice import views as invoice_views
+from user import views as user_views
 
 urlpatterns = [
+    path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
+    path('register', user_views.register, name='register'),
     path('', invoice_views.index, name='index'),
     path('form/', invoice_views.form, name='form'),
     path('preview/', invoice_views.basic_data, name='preview'),
@@ -30,5 +34,6 @@ urlpatterns = [
     path('itens/<str:billing_id>/', invoice_views.item_form, name='itens'),
     path('post_itens/', invoice_views.itens, name='post_itens'),
     path('post_investiment/', invoice_views.investiment, name='post_investiment'),
+    path('accounts/profile/', invoice_views.rend, name='rend'),
     path('admin/', admin.site.urls),
 ]

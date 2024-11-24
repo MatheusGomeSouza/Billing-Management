@@ -19,6 +19,9 @@ import json
 def index(request):
     return render(request,'guest/index.html')
 
+def rend(request):
+    return redirect('index')
+
 def form(request):
     basic_obj = BasicData.objects.filter(user=request.user.id)
     basic_obj = basic_obj[0] if basic_obj else basic_obj
@@ -29,6 +32,8 @@ def form(request):
 
 def basic_data(request):
     basic_obj = BasicData.objects.filter(user=request.user.id)
+    if not basic_obj:
+        return render(request, 'guest/chart.html')
     basic_obj = basic_obj[0] if basic_obj else basic_obj
     billings_obj = Billing.objects.filter(data=basic_obj.id) if basic_obj else None
     month = []
@@ -72,29 +77,37 @@ def basic_data(request):
         var_full.append(var_sum_conta)
         inve_full.append(inv_sum_conta)
 
+    g = 'Waiting for data'
+    perc = [0,0,0]
+    try:
+        obj_df = zip(month, full)
+        df = pd.DataFrame(obj_df, columns=["month", "full"])
 
-    obj_df = zip(month, full)
-    df = pd.DataFrame(obj_df, columns=["month", "full"])
+        if df["full"].dtype == 'object':  # Se for string ou categoria
+            encoder = LabelEncoder()
+            df["full"] = encoder.fit_transform(df["full"])
 
-    if df["full"].dtype == 'object':  # Se for string ou categoria
-        encoder = LabelEncoder()
-        df["full"] = encoder.fit_transform(df["full"])
+        y_train, y_test = temporal_train_test_split(df["full"], train_size=0.8)
+        fh = ForecastingHorizon(y_test.index, is_relative=False)
+        forecaster = ThetaForecaster(sp=4)
+        forecaster.fit(y_train)
 
-    y_train, y_test = temporal_train_test_split(df["full"], train_size=0.8)
-    fh = ForecastingHorizon(y_test.index, is_relative=False)
-    forecaster = ThetaForecaster(sp=4)
-    forecaster.fit(y_train)
+        y_pred = forecaster.predict(fh)
 
-    y_pred = forecaster.predict(fh)
+        mean_absolute_percentage_error(y_test, y_pred)
 
-    mean_absolute_percentage_error(y_test, y_pred)
+        fig, ax  = plot_series(df["full"], y_pred)
 
-    fig, ax  = plot_series(df["full"], y_pred)
+        g = mpld3.fig_to_html(fig)
 
-    g = mpld3.fig_to_html(fig)
+        
+    except Exception as err:
+        pass
 
-
-    perc = [round(((fix*100)/soma_total),2),round(((var*100)/soma_total),2),round(((inve*100)/soma_total),2)]
+    try:
+        perc = [round(((fix*100)/soma_total),2),round(((var*100)/soma_total),2),round(((inve*100)/soma_total),2)]
+    except Exception as err:
+        pass
     context = {"basic_obj":basic_obj, "billings":billings_obj,"month":json.dumps(month), "total":json.dumps(full), "perc":json.dumps(perc),
                "fix_full":json.dumps(fix_full),"inve_full":json.dumps(inve_full),"var_full":json.dumps(var_full), 'g': g}
     return render(request, 'guest/chart.html', context)
@@ -111,7 +124,14 @@ def item_form(request, billing_id):
     itens_obj = Itens.objects.filter(billing_id=billing_id)
     investiment = Investiment.objects.filter(billing_id=billing_id)
     billing_obj = Billing.objects.filter(id=billing_id)
-    context = {"itens":itens_obj,"billing_id":billing_id,"investiment":investiment, "month": billing_obj[0].month}
+    total = 0
+    for i in itens_obj:
+        total += int(i.value)
+    for i in investiment:
+        total+=(i.value)
+    basic = BasicData.objects.filter(id=billing_obj[0].data_id)
+    saldo = int(basic[0].salary) - total
+    context = {"itens":itens_obj,"billing_id":billing_id,"investiment":investiment, "month": billing_obj[0].month, "saldo":saldo,"fatura":total}
     return render(request,'guest/itens.html', context)
 
 def basic(request):
@@ -120,6 +140,11 @@ def basic(request):
         user_id = request.POST['user_id']
         obj = BasicData(salary=salary, user_id=user_id, status='Open')
         obj.save()
+
+        month_list = ['Jan','Fev','Mar','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro']
+        for month in month_list:
+            bil_obj = Billing(data_id=obj.id, month=month, status='Open',total=0)
+            bil_obj.save()
     return redirect('/form/')
 
 def billing(request):

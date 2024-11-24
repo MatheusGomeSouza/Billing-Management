@@ -1,0 +1,79 @@
+#button-favorito{
+    background: white;
+    border: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#button-sacola{
+    background: white;
+    border: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.button{
+    background: white;
+    border: 0;
+    font-size: 20px;
+    font-family: Roboto;
+    font-weight: bold;
+    color: black;
+}
+.form{
+    border-color: black;
+    font-size: 1.4rem;
+    width: 90%;
+    background-color: #F6F6F6;
+    border-radius: 5px;
+    padding-left: 18px;
+    font-family: Roboto;
+}
+.sem-borda{
+    border-radius: 0 !important;
+}
+#entrar{
+    color: white;
+    font-size: 19px;
+    font-family: Roboto;
+    font-weight: bold;
+    width: 90%;
+}
+.texto1{
+    color: black;
+    font-size: 13px;
+    font-family: Roboto;
+    font-weight: bold;
+}
+.texto1:hover{
+    color: #4B4B4B;
+}
+#cadastro{
+    color: black;
+    font-size: 19px;
+    font-family: Roboto;
+    font-weight: bold;
+    background: #EAEAEA;
+    width: 90%;
+}
+.titulo{
+    font-size: 20px;
+    font-family: Roboto;
+    font-weight: bold;
+}
+.informacao{
+    font-size: 14px;
+    color: black;
+    font-family: Roboto;
+    font-weight: bold;
+}
+.rodape{
+    background-color: #F6F6F6;
+}
+#rodape-social{
+    padding: 10px;
+}
+html {
+  overflow: hidden;
+}
+body {
+  overflow: hidden;
+}

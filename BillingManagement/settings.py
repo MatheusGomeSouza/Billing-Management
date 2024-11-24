@@ -41,10 +41,12 @@ INSTALLED_APPS = [
     # libs
     'rest_framework',
     'crispy_forms',
+    'crispy_bootstrap4',
     'localflavor',
     'widget_tweaks',
     # apps
-    'invoice'
+    'invoice',
+    'user'
 ]
 
 MIDDLEWARE = [
@@ -134,6 +136,8 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+LOGIN_REDIRECT_URL = 'index'
 
 
 # Default primary key field type
