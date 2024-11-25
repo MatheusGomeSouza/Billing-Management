@@ -25,17 +25,17 @@ def rend(request):
 def form(request):
     basic_obj = BasicData.objects.filter(user=request.user.id)
     basic_obj = basic_obj[0] if basic_obj else basic_obj
-    billings_obj = Billing.objects.filter(data=basic_obj.id) if basic_obj else None
+    billings_obj = Billing.objects.filter(data=basic_obj.id).order_by('id') if basic_obj else None
     context = {"basic_obj":basic_obj, "billings":billings_obj}
     # context = RequestContext(request,{"basic_obj":basic_obj})
     return render(request, 'guest/forms.html', context)
 
-def basic_data(request):
+def preview_data(request):
     basic_obj = BasicData.objects.filter(user=request.user.id)
     if not basic_obj:
         return render(request, 'guest/chart.html')
     basic_obj = basic_obj[0] if basic_obj else basic_obj
-    billings_obj = Billing.objects.filter(data=basic_obj.id) if basic_obj else None
+    billings_obj = Billing.objects.filter(data=basic_obj.id).order_by('id') if basic_obj else None
     month = []
     fix_full = []
     var_full = []
@@ -134,7 +134,7 @@ def item_form(request, billing_id):
     context = {"itens":itens_obj,"billing_id":billing_id,"investiment":investiment, "month": billing_obj[0].month, "saldo":saldo,"fatura":total}
     return render(request,'guest/itens.html', context)
 
-def basic(request):
+def create_basic(request):
     if request.method=='POST':
         salary = request.POST['Salary']
         user_id = request.POST['user_id']
@@ -147,18 +147,18 @@ def basic(request):
             bil_obj.save()
     return redirect('/form/')
 
-def billing(request):
+def create_billing(request):
     if request.method=='POST':
         data_id = request.POST['data_id']
         month = request.POST['month']
-        response = Billing.objects.filter(data_id=data_id, month=month)
+        response = Billing.objects.filter(data_id=data_id, month=month).order_by('id')
         if response:
             return redirect('/form/')
         obj = Billing(data_id=data_id, month=month, status='Open',total=0)
         obj.save()
     return redirect('/form/')
 
-def itens(request):
+def create_itens(request):
     if request.method=='POST':
         billing_id = request.POST['billing_id']
         description = request.POST['description']
@@ -170,16 +170,20 @@ def itens(request):
 
         bill_obj = Billing.objects.filter(id=billing_id)
         all_itens = Itens.objects.filter(billing_id=billing_id)
+        all_inv = Investiment.objects.filter(billing_id=billing_id)
         basic_data = BasicData.objects.filter(id=bill_obj[0].data_id)
         soma=0
         if all_itens:
             for i in all_itens:
                 soma+=i.value
+        if all_inv:
+            for i in all_inv:
+                soma+=i.value
         status = 'healthy' if basic_data[0].salary > soma else 'value exceeded'
         bill_obj.update(status=status)
     return redirect(f'/itens/{billing_id}/')
 
-def investiment(request):
+def create_investiment(request):
     if request.method=='POST':
         description = request.POST['description']
         billing_id = request.POST['billing_id']

@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     # libs
     'rest_framework',
     'crispy_forms',
-    'crispy_bootstrap4',
+    "crispy_bootstrap4",
     'localflavor',
     'widget_tweaks',
     # apps
@@ -132,7 +132,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
@@ -144,3 +144,6 @@ LOGIN_REDIRECT_URL = 'index'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

@@ -1,0 +1,185 @@
+html {
+  overflow-x: hidden;
+}
+body {
+  overflow-x: hidden;
+}
+#img-lupa{
+    width:24px;
+    height:24px;
+}
+#barra-busca{
+    margin: 0 auto; 
+    background-color: #C6D5F4; 
+    border-radius: 5px; 
+    height: 33px; 
+    top: 40px;
+}
+#barra-busca1{
+    background-color: #C6D5F4;
+    height: 100%;
+    border-radius: 5px;
+    border: 0;
+    width: calc(100% - 24px);
+}
+#img-perfil{
+    width:24px;
+    height:24px;
+}
+.cadastre{
+    font-size: 13px;
+    font-family: Roboto;
+    font-weight: bold;
+    color:black
+}
+.cadastre:hover{
+    color:black;
+}
+#button-favorito{
+    background: white;
+    border: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#button-sacola{
+    background: white;
+    border: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.button{
+    background: white;
+    border: 0;
+    font-size: 20px;
+    font-family: Roboto;
+    font-weight: bold;
+    color: black;
+}
+.button:hover{
+    color: #4B4B4B;
+}
+.button:visited{
+    color: black;
+}
+.dados{
+    font-size: 23px;
+    font-family: Roboto;
+    font-weight: bold;
+}
+#estado{
+    font-family: Roboto;
+    font-size: 20px;
+}
+.estados{
+    border-color: #E2E2E2;
+    padding-left: 22px;
+    padding-right: 11px;
+    background-color:#F6F6F6;
+    border-radius: 5px;
+    font-size: 1.4rem;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-family: Roboto;
+}
+.form{
+    border-color: #E2E2E2;
+    font-size: 1.4rem;
+    width: 100%;
+    background-color: #F6F6F6;
+    border-radius: 5px;
+    padding-left: 18px;
+    font-family: Roboto;
+}
+.forms{
+    font-family: Roboto;
+    font-size: 20px;
+}
+#vencimento{
+    font-family: Roboto;
+    font-size: 20px;
+}
+.vencimento{
+    border-color: #E2E2E2;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color:#F6F6F6;
+    border-radius: 5px;
+    font-size: 1.4rem;
+    padding-top: 2px;
+    padding-bottom: 2px
+}
+.parcela{
+    border-color: #E2E2E2;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color:#F6F6F6;
+    border-radius: 5px;
+    font-size: 1.4rem;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-family: Roboto;
+    width: 100%;
+}
+.descricao{
+   font-size:20px;
+   font-weight: bold;
+   font-family: Roboto;
+}
+#preco{
+   font-size:28px;
+   font-weight: bold;
+   font-family: Roboto; 
+}
+#quadro{
+    background-color: #F6F6F6
+}
+#total{
+    font-size:24px;
+    font-family: Roboto;
+    font-weight: bold;
+}
+#parcela{
+    font-size:16px;
+    font-family: Roboto;
+    font-weight: bold;
+}
+.sem-borda{
+    border-radius: 0 !important;
+}
+#voltar{
+    font-family: Roboto;
+    font-size: 30px;
+    color: red; 
+}
+#voltar:hover{
+    color: #4B4B4B;
+}
+#voltar:visited{
+    color: red;
+}
+#finalizar{
+    font-family: Roboto;
+    font-size: 28px;
+}
+.mes-agradecimento{
+    font-family: Roboto;
+    font-size:16px;
+    font-weight: bold;
+}
+.titulo{
+    font-size: 20px;
+    font-family: Roboto;
+    font-weight: bold;
+}
+.informacao{
+    font-size: 14px;
+    color: black;
+    font-family: Roboto;
+    font-weight: bold;
+}
+.rodape{
+    background-color: #F6F6F6;
+}
+#rodape-social{
+    padding: 10px;
+}

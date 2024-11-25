@@ -1,0 +1,271 @@
+html {
+    overflow-x: hidden;
+  }
+  body {
+    overflow-x: hidden;
+  }
+  #img-lupa{
+      width:24px;
+      height:24px;
+  }
+  #barra-busca{
+      margin: 0 auto; 
+      background-color: #C6D5F4; 
+      border-radius: 5px; 
+      height: 33px; 
+      top: 40px;
+  }
+  #barra-busca1{
+      background-color: #C6D5F4;
+      height: 100%;
+      border-radius: 5px;
+      border: 0;
+      width: calc(100% - 24px);
+  }
+  #img-perfil{
+      width:24px;
+      height:24px;
+  }
+  .cadastre{
+      font-size: 13px;
+      font-family: Roboto;
+      font-weight: bold;
+      color:black;
+  }
+  .cadastre:hover{
+      color:black;
+  }
+  #button-favorito{
+      background: white;
+      border: 0;
+      padding-left: 10px;
+      padding-right: 10px;
+  }
+  #button-sacola{
+      background: white;
+      border: 0;
+      padding-left: 10px;
+      padding-right: 10px;
+  }
+#texto{
+    color: white;
+    font-size: 19px;
+    font-family: Roboto;
+    font-weight: bold;
+}
+#email{
+    font-size: 17px;
+    border-color: #4B4B4B;
+}
+#password{
+    font-size: 17px;
+    border-color: #4B4B4B;
+}
+.texto1{
+    color: black;
+    font-size: 13px;
+    font-family: Roboto;
+    font-weight: bold;
+}
+.texto1:hover{
+    color: #4B4B4B;
+}
+#texto1{
+    color: black;
+    font-size: 19px;
+    font-family: Roboto;
+    font-weight: bold;
+    background: #EAEAEA;
+}
+.button{
+    background: white;
+    border: 0;
+    font-size: 20px;
+    font-family: Roboto;
+    font-weight: bold;
+    color: black;
+}
+.button:hover{
+    color: #4B4B4B;
+}
+.button:visited{
+    color: black;
+}
+#localizacao{
+    font-size: 23px;
+    font-family: Roboto;
+    font-weight: bold;
+    padding-top: 40px;
+    padding-bottom: 5px;
+}
+.produto{
+    font-size: 25px;
+    font-family: Roboto;
+    font-weight: bold;
+}
+.preco{
+    font-size: 26px;
+    font-family: Roboto;
+    font-weight: bold;
+}
+#itens{
+    font-size: 18px;
+    font-family: Roboto;
+    padding-bottom: 50px;
+}
+.linha{
+    flex: 1px;
+    background: black;
+    margin-left:auto;
+    height: 1px;
+    border: none;
+    margin-right: auto;
+}
+.linha1{
+    flex: 1px;
+    background: black;
+    margin-left:auto;
+    height: 1px;
+    border: none;
+    margin-right: auto;
+}
+.linha4{
+    flex: 1px;
+    background: black;
+    margin-left:auto;
+    height: 1px;
+    border: none;
+    margin-right: auto;
+    margin-top: 36px;
+}
+.titulo{
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 22px;
+}
+#frete{
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 16px;
+    padding-top: 34px;
+    padding-bottom: 25px;
+}
+.cep{
+  border: 0;
+  outline: 0;
+  border-bottom: 1px solid #000000;
+  font-size: 1.4rem;
+  color: black;
+  width: 150px
+}
+.sem-borda{
+  border-radius: 0 !important;
+}
+#txtok{
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 20px;
+}
+#btn-finaliza{
+    padding-top: 9px;
+    padding-bottom: 9px;
+}
+#finalizar{
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 20px;
+}
+#btn-escolher{
+    padding-top: 9px;
+    padding-bottom: 9px;
+}
+#escolher{
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 20px;
+}
+#quadro{
+    margin-bottom: 9px;
+    margin-top: 100px;
+    background-color: #C4C4C4;
+    margin-left: 1px;
+    margin-right: 1px;
+}
+#total{
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 25px;
+}
+#valor{
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 24px;
+}
+#parcela{
+    font-family: Roboto;
+    font-size: 13px;
+}
+#distancia{
+    padding-bottom: 60px;
+}
+#tamanho{
+    font-family: Roboto;
+    font-size: 18px;
+}
+#quantidade{
+    font-family: Roboto;
+    font-size: 18px;
+}
+.menu1{
+    font-family: Roboto;
+    font-size: 18px;
+    border-color: black;
+}
+.menu{
+    font-family: Roboto;
+    font-size: 18px;
+    border-color: black;
+    padding-right: 18px
+}
+.informacao{
+    font-size: 14px;
+    color: black;
+    font-family: Roboto;
+    font-weight: bold;
+}
+.rodape{
+    background: #F6F6F6;   
+}
+#rodape-info{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.rodape1{
+    font-size: 20px;
+    padding-top: 42px;
+    padding-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    font-family: Roboto;
+    font-weight: bold;
+    margin: 0 30px
+}
+.rodape-titulo-coluna{
+    padding-bottom: 30px;
+}
+.rodape2{
+    font-size: 14px;
+    color: black;
+}
+.rodape3{
+    color:black;
+}
+.rodape4{
+    padding-left: 8px;
+}
+#rodape-social{
+    display:flex;
+    justify-content: center;
+    padding: 10px
+}

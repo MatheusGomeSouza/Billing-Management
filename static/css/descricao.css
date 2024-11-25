@@ -1,0 +1,256 @@
+html {
+    overflow-x: hidden;
+  }
+body {
+    overflow-x: hidden;
+}
+#img-lupa{
+    width:24px;
+    height:24px;
+}
+#barra-busca{
+    margin: 0 auto; 
+    background-color: #C6D5F4; 
+    border-radius: 5px; 
+    height: 33px; 
+    top: 40px;
+}
+#barra-busca1{
+    background-color: #C6D5F4;
+    height: 100%;
+    border-radius: 5px;
+    border: 0;
+    width: calc(100% - 24px);
+}
+#img-perfil{
+    width:24px;
+    height:24px;
+}
+.cadastre{
+    font-size: 13px;
+    font-family: Roboto;
+    font-weight: bold;
+    color:black;
+}
+.cadastre:hover{
+    color:black;
+}
+#button-favorito{
+    background: white;
+    border: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#button-sacola{
+    background: white;
+    border: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.informacao{
+    font-size: 14px;
+    color: black;
+    font-family: Roboto;
+    font-weight: bold;
+}
+#texto{
+    color: white;
+    font-size: 19px;
+    font-family: Roboto;
+    font-weight: bold;
+}
+#email{
+    font-size: 17px;
+    border-color: #4B4B4B;
+}
+#password{
+    font-size: 17px;
+    border-color: #4B4B4B;
+}
+.texto1{
+    color: black;
+    font-size: 13px;
+    font-family: Roboto;
+    font-weight: bold;
+}
+.texto1:hover{
+    color: #4B4B4B;
+}
+#texto1{
+    color: black;
+    font-size: 19px;
+    font-family: Roboto;
+    font-weight: bold;
+    background: #EAEAEA;        
+}
+.button{
+    background: white;
+    border: 0;
+    font-size: 20px;
+    font-family: Roboto;
+    font-weight: bold;
+    color: black;
+}
+.button:hover{
+    color: #4B4B4B;
+}
+.button:visited{
+    color: black;
+}
+#localizacao{
+    font-size: 18px;
+    font-family: Roboto;
+    font-weight: bold;
+    padding-top: 40px;
+    padding-bottom: 50px;
+}
+.espaco{
+    padding-left: 8px;
+}
+#descricao{
+    flex-direction: column;
+    padding-top:   
+}
+.tituloroupa{
+    font-family: Roboto;
+    font-size: 33px;
+    font-weight: bold;
+}
+#valor{
+    font-family: Roboto;
+    font-size: 30px;
+    font-weight: bold;
+    padding-top: 30px;
+}
+#parcela{
+    font-family: Roboto;
+    font-size: 18px;
+}
+#tamanho{
+    font-family: Roboto;
+    font-size: 23px;
+    font-weight: bold;
+    padding-bottom: 21px;
+    padding-top: 46px;
+}
+
+#comprar{
+    padding-top: 32px;
+}
+#txtcomprar{
+    font-family: Roboto;
+    font-size: 23px;
+}
+#adicionarfav{
+    padding-top: 18px;
+    padding-bottom: 30px;
+}
+#txtadd{
+    font-family: Roboto;
+    font-size: 18px;
+}
+.topico{
+    display: flex;
+    align-items: center;
+    padding: 50px 0px;
+}
+.linha1{
+    flex: 1px;
+    background: black;
+    margin-left:auto;
+    height: 1px;
+    border: none;
+    margin-right: 10px;
+}
+.linha2{
+    flex: 1px;
+    background: black;
+    margin-left:auto;
+    height: 1px;
+    border: none;
+    margin-left: 10px;
+}
+.titulo{
+    text-align: center;
+    font-size: 20px;
+    font-family: Roboto;
+    font-weight: bold;
+}
+.roupas{
+    display: flex;
+    justify-content: center;
+}
+.camiseta{
+    border: 0;
+    background: white;
+    padding-left: 67px;
+    padding-right: 67px;
+}
+.camiseta1{
+    border: 0;
+    background: #F6F6F6;
+    padding-left: 67px;
+    padding-right: 67px;
+    
+}
+.div-roupa{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+.desc-camiseta{
+    font-size: 20px;
+    font-family: Roboto;
+    font-weight: bold;        
+}
+.valor{
+    font-size: 24px;
+    font-family: Roboto;
+    font-weight: bold;
+}
+#retorno{
+    background: #F6F6F6;
+}
+#retorno1{
+    background: #F6F6F6;
+}
+
+.rodape{
+    background: #F6F6F6;
+}
+#rodape-info{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.rodape1{
+    font-size: 20px;
+    padding-top: 42px;
+    padding-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    font-family: Roboto;
+    font-weight: bold;
+    margin: 0 30px
+}
+.rodape-titulo-coluna{
+    padding-bottom: 30px;
+}
+.rodape2{
+    font-size: 14px;
+    color: black;
+}
+.rodape3{
+    color:black;
+}
+.rodape4{
+    padding-left: 8px;
+}
+#rodape-social{
+    display:flex;
+    justify-content: center;
+    padding: 10px;
+}
+.sem-borda{
+    border-radius: 0 !important;
+}
